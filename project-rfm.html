@@ -14,9 +14,14 @@
     <nav class="navbar">
         <div class="container">
             <a href="index.html" class="logo">Alex Saji</a>
+            <button class="menu-toggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
             <div class="nav-links">
                 <a href="index.html">Home</a>
-                <a href="index.html#about">About</a>
+                <a href="about.html">About</a>
                 <a href="index.html#contact" class="contact-btn">Contact</a>
             </div>
         </div>
@@ -33,8 +38,9 @@
 
             <h1 class="project-page-title">RFM Analysis for Automobile Parts Manufacturer</h1>
             <p class="project-category">Customer Analytics</p>
+            <p class="project-tagline">A data-driven customer segmentation solution enabling targeted marketing strategies through RFM analysis and behavioral insights.</p>
 
-            <a href="https://github.com/alxsaji" target="_blank" class="btn-primary">
+            <a href="https://github.com/alxsaji/rfm-analysis" target="_blank" class="btn-primary">
                 <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
                     <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
                 </svg>
@@ -54,11 +60,34 @@
         </div>
     </section>
 
+    <!-- Project Metadata -->
     <section class="project-section">
         <div class="container">
-            <div class="content-box">
-                <h3>Project Overview</h3>
-                <p>Segmented customers for an automobile parts manufacturer using RFM (Recency, Frequency, Monetary) methodology to enhance targeted marketing strategies. The analysis identified distinct customer segments enabling personalized marketing campaigns and improved customer retention initiatives.</p>
+            <div class="project-metadata">
+                <div class="metadata-item">
+                    <div class="metadata-label">Role</div>
+                    <div class="metadata-value">Data Analyst</div>
+                </div>
+                <div class="metadata-item">
+                    <div class="metadata-label">Team</div>
+                    <div class="metadata-value-list">
+                        <span>Marketing Manager</span>
+                        <span>Business Analyst</span>
+                    </div>
+                </div>
+                <div class="metadata-item">
+                    <div class="metadata-label">Tools</div>
+                    <div class="metadata-value-list">
+                        <span>Python</span>
+                        <span>Pandas</span>
+                        <span>Matplotlib</span>
+                        <span>Seaborn</span>
+                    </div>
+                </div>
+                <div class="metadata-item">
+                    <div class="metadata-label">Timeline</div>
+                    <div class="metadata-value">1.5 months</div>
+                </div>
             </div>
         </div>
     </section>
@@ -66,8 +95,9 @@
     <section class="project-section">
         <div class="container">
             <div class="content-box">
-                <h3>Problem Statement</h3>
-                <p>The automobile parts manufacturer needed to understand their customer base to allocate marketing resources effectively. Without customer segmentation, marketing campaigns were generic and failing to resonate with different customer types, resulting in low engagement rates and suboptimal ROI on marketing spend.</p>
+                <h2 class="section-header">Context</h2>
+                <p>This project emerged from <span class="highlight-text">a critical need for customer understanding</span> in the automobile parts manufacturing industry. The manufacturer was struggling with generic marketing campaigns that failed to resonate with different customer types, leading to wasted marketing spend and missed opportunities for customer engagement.</p>
+                <p>The challenge stems from <span class="highlight-text">the abundance of customer transaction data</span> but <span class="highlight-text">lack of actionable segmentation</span> that could guide targeted marketing strategies. Without proper customer segmentation, the business couldn't effectively allocate marketing resources or personalize customer experiences.</p>
             </div>
         </div>
     </section>
@@ -75,16 +105,17 @@
     <section class="project-section">
         <div class="container">
             <div class="content-box">
-                <h3>Solution & Approach</h3>
-                <p>Implemented comprehensive RFM analysis to segment customers and guide marketing strategy:</p>
+                <h2 class="section-header">Problem</h2>
+                <p>There is <span class="highlight-text">an abundance of customer transaction data</span> but <span class="highlight-text">lack of reliable segmentation methods</span> for marketing teams to determine <span class="highlight-text">which customers to target with specific campaigns</span> and optimize marketing resource allocation.</p>
+                <h3 class="section-subheader">How Might We</h3>
+                <p class="phase-question">"How might we improve customer segmentation to enable targeted marketing strategies that resonate with different customer types, increase engagement rates, and optimize marketing ROI in the automobile parts industry?"</p>
+                <p>Marketing teams face several key challenges:</p>
                 <ul>
-                    <li>Collected and cleaned customer transaction data from CRM system</li>
-                    <li>Calculated Recency (days since last purchase), Frequency (number of transactions), and Monetary (total spend) metrics</li>
-                    <li>Scored customers on 1-5 scale for each RFM dimension</li>
-                    <li>Created RFM segments (Champions, Loyal Customers, At Risk, Lost, etc.)</li>
-                    <li>Performed exploratory data analysis to understand segment characteristics</li>
-                    <li>Developed targeted marketing strategies for each customer segment</li>
-                    <li>Created visualizations to communicate segment profiles to marketing team</li>
+                    <li>Difficulty identifying high-value customer segments</li>
+                    <li>Lack of understanding of customer behavior patterns</li>
+                    <li>Inability to personalize marketing messages effectively</li>
+                    <li>Limited visibility into at-risk customers requiring retention efforts</li>
+                    <li>Challenges in allocating marketing budget across customer segments</li>
                 </ul>
             </div>
         </div>
@@ -93,8 +124,8 @@
     <section class="project-section">
         <div class="container">
             <div class="content-box">
-                <h3>Process & Methodology</h3>
-                <p>Data preparation involved cleaning transaction records and handling missing values. Calculated RFM metrics and applied quantile-based scoring method. Segmented customers into 11 distinct groups based on RFM scores. Conducted exploratory data analysis to profile each segment's behavior patterns and value to the business.</p>
+                <h2 class="section-header">Project Goal</h2>
+                <p>Make the process of customer segmentation <span class="highlight-text">reliable</span>, <span class="highlight-text">actionable</span>, and <span class="highlight-text">marketing-focused</span> for the business, enabling them to develop targeted campaigns that increase engagement and improve customer retention.</p>
             </div>
         </div>
     </section>
@@ -102,8 +133,9 @@
     <section class="project-section">
         <div class="container">
             <div class="content-box">
-                <h3>Results & Outcomes</h3>
-                <p>Successfully segmented 15,000+ customers into actionable groups including 8% Champions (high value, highly engaged), 18% Loyal Customers, 22% Potential Loyalists, and 15% At Risk customers. Marketing team implemented segment-specific campaigns resulting in 25% increase in email engagement rates and 30% improvement in customer retention for at-risk segments.</p>
+                <h2 class="section-header">Solution</h2>
+                <p class="project-tagline" style="margin-bottom: 24px;">"Segment customers with precision, insight, and actionability – the goal is to Maximize Marketing Effectiveness."</p>
+                <p>Developed a comprehensive RFM (Recency, Frequency, Monetary) analysis framework that segments customers into actionable groups based on their transaction behavior. The solution provides clear customer profiles and targeted marketing recommendations for each segment.</p>
             </div>
         </div>
     </section>
@@ -111,7 +143,91 @@
     <section class="project-section">
         <div class="container">
             <div class="content-box">
-                <h3>Technologies Used</h3>
+                <h2 class="section-header">Core Features</h2>
+                <div class="features-grid">
+                    <div class="feature-item">
+                        <h4>RFM Segmentation</h4>
+                        <p>Automated customer segmentation based on Recency, Frequency, and Monetary value metrics to identify distinct customer groups.</p>
+                    </div>
+                    <div class="feature-item">
+                        <h4>Customer Profiling</h4>
+                        <p>Detailed behavioral profiles for each segment including purchase patterns, value contribution, and engagement levels.</p>
+                    </div>
+                    <div class="feature-item">
+                        <h4>Targeted Strategies</h4>
+                        <p>Customized marketing recommendations for each segment to maximize engagement and retention.</p>
+                    </div>
+                    <div class="feature-item">
+                        <h4>Visual Analytics</h4>
+                        <p>Interactive visualizations and dashboards to communicate segment insights to marketing teams.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="project-section">
+        <div class="container">
+            <div class="content-box">
+                <h2 class="section-header">Approach</h2>
+                <p>The project was developed using a systematic customer analytics methodology, following best practices in RFM analysis and customer segmentation. The approach was divided into four key phases: Data Preparation, RFM Calculation, Segmentation, and Strategy Development.</p>
+                
+                <div class="methodology-phases">
+                    <div class="phase-box">
+                        <div class="phase-label">Phase 1</div>
+                        <h3 class="phase-title">Data Collection & Preparation</h3>
+                        <p class="phase-question">"What customer data do we need, and how do we ensure its quality?"</p>
+                        <p class="phase-description">Collected customer transaction data from CRM system including purchase dates, order values, and product categories. Performed comprehensive data cleaning including handling missing values, removing duplicates, and validating data integrity. Ensured data quality through statistical analysis and business rule validation.</p>
+                    </div>
+                    
+                    <div class="phase-box">
+                        <div class="phase-label">Phase 2</div>
+                        <h3 class="phase-title">RFM Calculation</h3>
+                        <p class="phase-question">"How do we calculate meaningful RFM scores for each customer?"</p>
+                        <p class="phase-description">Calculated Recency (days since last purchase), Frequency (total number of transactions), and Monetary (total customer value) metrics for each customer. Applied quantile-based scoring method to assign 1-5 scores for each RFM dimension. Created composite RFM scores to rank customers by overall value and engagement.</p>
+                    </div>
+                    
+                    <div class="phase-box">
+                        <div class="phase-label">Phase 3</div>
+                        <h3 class="phase-title">Customer Segmentation</h3>
+                        <p class="phase-question">"How do we group customers into actionable segments?"</p>
+                        <p class="phase-description">Segmented customers into 11 distinct groups based on RFM score combinations including Champions, Loyal Customers, Potential Loyalists, At Risk, Lost Customers, and others. Conducted exploratory data analysis to understand each segment's characteristics, behavior patterns, and value contribution to the business.</p>
+                    </div>
+                    
+                    <div class="phase-box">
+                        <div class="phase-label">Phase 4</div>
+                        <h3 class="phase-title">Strategy Development & Visualization</h3>
+                        <p class="phase-question">"How do we translate segments into actionable marketing strategies?"</p>
+                        <p class="phase-description">Developed targeted marketing strategies for each customer segment based on their characteristics and behavior. Created visualizations including segment distribution charts, RFM heat maps, and customer journey maps. Communicated findings to marketing team through interactive dashboards and detailed reports.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="project-section">
+        <div class="container">
+            <div class="content-box">
+                <h2 class="section-header">Results & Outcomes</h2>
+                <p>Successfully segmented <span class="highlight-text">15,000+ customers</span> into actionable groups including <span class="highlight-text">8% Champions</span> (high value, highly engaged), 18% Loyal Customers, 22% Potential Loyalists, and 15% At Risk customers.</p>
+                <h3 class="section-subheader">Key Achievements</h3>
+                <ul>
+                    <li>Identified 8% Champions segment contributing 35% of total revenue</li>
+                    <li>Increased email engagement rates by 25% through segment-specific campaigns</li>
+                    <li>Improved customer retention by 30% for at-risk segments</li>
+                    <li>Enabled personalized marketing messages for each customer segment</li>
+                    <li>Optimized marketing budget allocation based on segment value</li>
+                    <li>Reduced marketing costs while improving campaign effectiveness</li>
+                </ul>
+                <p>The marketing team implemented segment-specific campaigns that resonated better with each customer group, resulting in improved engagement and retention across all segments.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="project-section">
+        <div class="container">
+            <div class="content-box">
+                <h2 class="section-header">Technologies Used</h2>
                 <div class="tech-tags">
                     <span class="tech-tag">Python</span>
                     <span class="tech-tag">Pandas</span>
@@ -120,6 +236,31 @@
                     <span class="tech-tag">EDA</span>
                     <span class="tech-tag">Matplotlib</span>
                     <span class="tech-tag">Seaborn</span>
+                    <span class="tech-tag">Jupyter Notebook</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="reflection-section">
+        <div class="container">
+            <div class="reflection-content">
+                <h2 class="section-header">Reflection</h2>
+                <p style="font-size: 16px; line-height: 1.8; color: var(--text-secondary); margin-bottom: 40px;">This RFM analysis project has been a rewarding experience that pushed me to think beyond basic customer grouping and explore the power of behavioral segmentation in marketing strategy.</p>
+                
+                <div class="reflection-item">
+                    <h4>RFM Methodology is Powerful but Requires Context</h4>
+                    <p>I learned that RFM analysis provides a solid foundation for customer segmentation, but the real value comes from understanding the business context behind each segment. Working closely with the marketing team helped me develop actionable strategies that went beyond just identifying segments.</p>
+                </div>
+                
+                <div class="reflection-item">
+                    <h4>Visualization is Key for Stakeholder Buy-in</h4>
+                    <p>Creating clear, intuitive visualizations was crucial for getting the marketing team to adopt the segmentation framework. Visual representations of segments and their characteristics made the insights more accessible and actionable for non-technical stakeholders.</p>
+                </div>
+                
+                <div class="reflection-item">
+                    <h4>Segmentation is Only the Beginning</h4>
+                    <p>I discovered that identifying segments is just the first step - the real challenge is developing and implementing targeted strategies for each segment. The project taught me the importance of translating analytical insights into practical marketing actions.</p>
                 </div>
             </div>
         </div>
@@ -136,8 +277,8 @@
         <div class="container">
             <p>© 2024 Alex Saji. All rights reserved.</p>
             <div class="footer-links">
-                <a href="https://github.com/alxsaji" target="_blank">GitHub</a>
-                <a href="https://linkedin.com/in/alxsaji" target="_blank">LinkedIn</a>
+                <a href="https://github.com/alxsaji/rfm-analysis" target="_blank">GitHub</a>
+                <a href="https://linkedin.com/in/alexsaji" target="_blank">LinkedIn</a>
             </div>
         </div>
     </footer>

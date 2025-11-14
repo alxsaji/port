@@ -14,9 +14,14 @@
     <nav class="navbar">
         <div class="container">
             <a href="index.html" class="logo">Alex Saji</a>
+            <button class="menu-toggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
             <div class="nav-links">
                 <a href="index.html">Home</a>
-                <a href="index.html#about">About</a>
+                <a href="about.html">About</a>
                 <a href="index.html#contact" class="contact-btn">Contact</a>
             </div>
         </div>
@@ -33,8 +38,9 @@
 
             <h1 class="project-page-title">Online Retail Orders Analysis</h1>
             <p class="project-category">Data Analysis</p>
+            <p class="project-tagline">A comprehensive SQL-based analysis extracting actionable business insights from retail order data to support strategic decision-making.</p>
 
-            <a href="https://github.com/alxsaji" target="_blank" class="btn-primary">
+            <a href="https://github.com/alxsaji/retail-orders-analysis" target="_blank" class="btn-primary">
                 <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
                     <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
                 </svg>
@@ -54,11 +60,33 @@
         </div>
     </section>
 
+    <!-- Project Metadata -->
     <section class="project-section">
         <div class="container">
-            <div class="content-box">
-                <h3>Project Overview</h3>
-                <p>Analyzed online retail order data using SQL to extract business insights and identify opportunities for operational improvement. The analysis uncovered patterns in customer ordering behavior, seasonal trends, and product performance metrics to support strategic business decisions.</p>
+            <div class="project-metadata">
+                <div class="metadata-item">
+                    <div class="metadata-label">Role</div>
+                    <div class="metadata-value">Data Analyst</div>
+                </div>
+                <div class="metadata-item">
+                    <div class="metadata-label">Team</div>
+                    <div class="metadata-value-list">
+                        <span>Business Analyst</span>
+                        <span>Operations Manager</span>
+                    </div>
+                </div>
+                <div class="metadata-item">
+                    <div class="metadata-label">Tools</div>
+                    <div class="metadata-value-list">
+                        <span>SQL</span>
+                        <span>PostgreSQL</span>
+                        <span>Database Design</span>
+                    </div>
+                </div>
+                <div class="metadata-item">
+                    <div class="metadata-label">Timeline</div>
+                    <div class="metadata-value">1 month</div>
+                </div>
             </div>
         </div>
     </section>
@@ -66,8 +94,9 @@
     <section class="project-section">
         <div class="container">
             <div class="content-box">
-                <h3>Problem Statement</h3>
-                <p>The online retail business needed comprehensive analysis of their order database to understand sales trends, customer behavior, and inventory needs. Without systematic data analysis, the business lacked visibility into key performance metrics and struggled to make informed decisions about inventory management and marketing strategies.</p>
+                <h2 class="section-header">Context</h2>
+                <p>This project emerged from <span class="highlight-text">a critical need for business intelligence</span> in the online retail sector. The business was operating with vast amounts of transaction data but lacked systematic analysis to understand sales trends, customer behavior, and operational opportunities.</p>
+                <p>The challenge stems from <span class="highlight-text">the abundance of order data</span> but <span class="highlight-text">lack of analytical capabilities</span> to extract actionable insights. Without proper data analysis, the business couldn't make informed decisions about inventory management, marketing strategies, or operational improvements.</p>
             </div>
         </div>
     </section>
@@ -75,16 +104,17 @@
     <section class="project-section">
         <div class="container">
             <div class="content-box">
-                <h3>Solution & Approach</h3>
-                <p>Developed comprehensive SQL queries and analysis framework to extract actionable insights:</p>
+                <h2 class="section-header">Problem</h2>
+                <p>There is <span class="highlight-text">an abundance of order transaction data</span> but <span class="highlight-text">lack of reliable analytical methods</span> for business teams to determine <span class="highlight-text">sales trends, customer behavior patterns, and operational opportunities</span> to support strategic decision-making.</p>
+                <h3 class="section-subheader">How Might We</h3>
+                <p class="phase-question">"How might we extract actionable insights from retail order data to understand sales trends, customer behavior, and inventory needs, enabling data-driven decisions for inventory management and marketing strategies?"</p>
+                <p>Business teams face several key challenges:</p>
                 <ul>
-                    <li>Designed and normalized database schema for efficient querying</li>
-                    <li>Created complex SQL queries using JOINs, subqueries, and window functions</li>
-                    <li>Analyzed sales trends across different time periods and product categories</li>
-                    <li>Identified top-performing products and customer segments</li>
-                    <li>Calculated key metrics including customer lifetime value, repeat purchase rate, and average order value</li>
-                    <li>Developed automated reporting queries for regular business insights</li>
-                    <li>Optimized query performance using indexes and query optimization techniques</li>
+                    <li>Difficulty identifying seasonal purchasing patterns and trends</li>
+                    <li>Lack of understanding of customer lifetime value and behavior</li>
+                    <li>Inability to identify high-value customer segments</li>
+                    <li>Limited visibility into product performance metrics</li>
+                    <li>Challenges in optimizing inventory levels and cash flow</li>
                 </ul>
             </div>
         </div>
@@ -93,8 +123,8 @@
     <section class="project-section">
         <div class="container">
             <div class="content-box">
-                <h3>Process & Methodology</h3>
-                <p>Database design involved normalizing tables and establishing relationships between orders, customers, and products. Developed SQL queries for exploratory analysis including aggregations, grouping, and filtering. Created views for commonly used metrics and implemented stored procedures for complex calculations. Documented all queries and analysis methodology for reproducibility.</p>
+                <h2 class="section-header">Project Goal</h2>
+                <p>Make the process of retail data analysis <span class="highlight-text">reliable</span>, <span class="highlight-text">comprehensive</span>, and <span class="highlight-text">actionable</span> for the business, enabling them to make data-driven decisions about inventory management, marketing strategies, and operational improvements.</p>
             </div>
         </div>
     </section>
@@ -102,8 +132,9 @@
     <section class="project-section">
         <div class="container">
             <div class="content-box">
-                <h3>Results & Outcomes</h3>
-                <p>Identified seasonal purchasing patterns with 40% spike in orders during Q4. Discovered that 20% of customers contributed to 65% of total revenue, enabling focused retention strategies. Found that customers who purchased within first 30 days had 3x higher lifetime value. Analysis led to data-driven inventory planning reducing stockouts by 25% and improving cash flow management.</p>
+                <h2 class="section-header">Solution</h2>
+                <p class="project-tagline" style="margin-bottom: 24px;">"Extract business insights with precision, depth, and actionability – the goal is to Enable Data-Driven Decision Making."</p>
+                <p>Developed a comprehensive SQL-based analysis framework that extracts actionable insights from retail order data. The solution provides deep visibility into sales trends, customer behavior, and operational metrics to support strategic business decisions.</p>
             </div>
         </div>
     </section>
@@ -111,13 +142,122 @@
     <section class="project-section">
         <div class="container">
             <div class="content-box">
-                <h3>Technologies Used</h3>
+                <h2 class="section-header">Core Features</h2>
+                <div class="features-grid">
+                    <div class="feature-item">
+                        <h4>Sales Trend Analysis</h4>
+                        <p>Comprehensive analysis of sales patterns across time periods, product categories, and geographic regions to identify trends and opportunities.</p>
+                    </div>
+                    <div class="feature-item">
+                        <h4>Customer Analytics</h4>
+                        <p>Deep insights into customer behavior including lifetime value, repeat purchase rates, and segment analysis to guide marketing strategies.</p>
+                    </div>
+                    <div class="feature-item">
+                        <h4>Product Performance</h4>
+                        <p>Identification of top-performing products, slow-moving inventory, and product category performance to optimize inventory management.</p>
+                    </div>
+                    <div class="feature-item">
+                        <h4>Operational Insights</h4>
+                        <p>Key metrics and KPIs to support inventory planning, cash flow management, and operational efficiency improvements.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="project-section">
+        <div class="container">
+            <div class="content-box">
+                <h2 class="section-header">Approach</h2>
+                <p>The project was developed using a systematic SQL analytics methodology, following best practices in database design, query optimization, and business intelligence. The approach was divided into four key phases: Database Design, Query Development, Analysis & Insights, and Reporting Automation.</p>
+                
+                <div class="methodology-phases">
+                    <div class="phase-box">
+                        <div class="phase-label">Phase 1</div>
+                        <h3 class="phase-title">Database Design & Normalization</h3>
+                        <p class="phase-question">"How do we structure the database for efficient analysis?"</p>
+                        <p class="phase-description">Designed and normalized database schema establishing relationships between orders, customers, products, and other entities. Created indexes for frequently queried columns to optimize query performance. Ensured data integrity through proper constraints and relationships.</p>
+                    </div>
+                    
+                    <div class="phase-box">
+                        <div class="phase-label">Phase 2</div>
+                        <h3 class="phase-title">Query Development</h3>
+                        <p class="phase-question">"What queries do we need to extract key business insights?"</p>
+                        <p class="phase-description">Developed complex SQL queries using JOINs, subqueries, window functions, and CTEs to analyze sales trends, customer behavior, and product performance. Created queries for calculating key metrics including customer lifetime value, repeat purchase rates, average order value, and seasonal patterns.</p>
+                    </div>
+                    
+                    <div class="phase-box">
+                        <div class="phase-label">Phase 3</div>
+                        <h3 class="phase-title">Analysis & Insights</h3>
+                        <p class="phase-question">"What insights can we extract from the data?"</p>
+                        <p class="phase-description">Analyzed sales trends across different time periods and product categories. Identified top-performing products and customer segments. Discovered seasonal purchasing patterns and customer behavior insights. Calculated key metrics to support strategic decision-making.</p>
+                    </div>
+                    
+                    <div class="phase-box">
+                        <div class="phase-label">Phase 4</div>
+                        <h3 class="phase-title">Reporting & Automation</h3>
+                        <p class="phase-question">"How do we make insights accessible and actionable?"</p>
+                        <p class="phase-description">Created views for commonly used metrics and implemented stored procedures for complex calculations. Developed automated reporting queries for regular business insights. Documented all queries and analysis methodology for reproducibility and knowledge transfer.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="project-section">
+        <div class="container">
+            <div class="content-box">
+                <h2 class="section-header">Results & Outcomes</h2>
+                <p>Identified seasonal purchasing patterns with <span class="highlight-text">40% spike in orders during Q4</span>. Discovered that <span class="highlight-text">20% of customers contributed to 65% of total revenue</span>, enabling focused retention strategies.</p>
+                <h3 class="section-subheader">Key Achievements</h3>
+                <ul>
+                    <li>Identified seasonal patterns enabling proactive inventory planning</li>
+                    <li>Discovered high-value customer segment (20% contributing 65% revenue)</li>
+                    <li>Found that early purchasers have 3x higher lifetime value</li>
+                    <li>Reduced stockouts by 25% through data-driven inventory planning</li>
+                    <li>Improved cash flow management through better demand forecasting</li>
+                    <li>Enabled targeted marketing strategies for high-value segments</li>
+                </ul>
+                <p>The analysis provided actionable insights that led to improved inventory management, better customer retention strategies, and enhanced operational efficiency.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="project-section">
+        <div class="container">
+            <div class="content-box">
+                <h2 class="section-header">Technologies Used</h2>
                 <div class="tech-tags">
                     <span class="tech-tag">SQL</span>
                     <span class="tech-tag">PostgreSQL</span>
                     <span class="tech-tag">Database Design</span>
                     <span class="tech-tag">Query Optimization</span>
                     <span class="tech-tag">Data Analysis</span>
+                    <span class="tech-tag">Window Functions</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="reflection-section">
+        <div class="container">
+            <div class="reflection-content">
+                <h2 class="section-header">Reflection</h2>
+                <p style="font-size: 16px; line-height: 1.8; color: var(--text-secondary); margin-bottom: 40px;">This retail orders analysis project has been a rewarding experience that pushed me to think beyond basic queries and explore the power of SQL analytics in business intelligence.</p>
+                
+                <div class="reflection-item">
+                    <h4>SQL is More Than Just Data Retrieval</h4>
+                    <p>I learned that SQL is a powerful analytical tool, not just for retrieving data. Using window functions, CTEs, and complex joins enabled me to extract deep insights that would be difficult to achieve with other tools. The ability to perform sophisticated analysis directly in the database is incredibly valuable.</p>
+                </div>
+                
+                <div class="reflection-item">
+                    <h4>Query Optimization Matters</h4>
+                    <p>Working with large datasets taught me the importance of query optimization. Creating proper indexes, using efficient join strategies, and optimizing subqueries significantly improved query performance. This experience reinforced the value of understanding database internals.</p>
+                </div>
+                
+                <div class="reflection-item">
+                    <h4>Business Context Transforms Data into Insights</h4>
+                    <p>I discovered that technical SQL skills are only part of the equation - understanding business context is crucial for extracting meaningful insights. Working closely with business stakeholders helped me develop queries that answered real business questions and drove actionable decisions.</p>
                 </div>
             </div>
         </div>
@@ -134,8 +274,8 @@
         <div class="container">
             <p>© 2024 Alex Saji. All rights reserved.</p>
             <div class="footer-links">
-                <a href="https://github.com/alxsaji" target="_blank">GitHub</a>
-                <a href="https://linkedin.com/in/alxsaji" target="_blank">LinkedIn</a>
+                <a href="https://github.com/alxsaji/retail-orders-analysis" target="_blank">GitHub</a>
+                <a href="https://linkedin.com/in/alexsaji" target="_blank">LinkedIn</a>
             </div>
         </div>
     </footer>

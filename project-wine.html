@@ -14,9 +14,14 @@
     <nav class="navbar">
         <div class="container">
             <a href="index.html" class="logo">Alex Saji</a>
+            <button class="menu-toggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
             <div class="nav-links">
                 <a href="index.html">Home</a>
-                <a href="index.html#about">About</a>
+                <a href="about.html">About</a>
                 <a href="index.html#contact" class="contact-btn">Contact</a>
             </div>
         </div>
@@ -33,8 +38,9 @@
 
             <h1 class="project-page-title">Wine Sales Forecasting</h1>
             <p class="project-category">Time Series Analysis</p>
+            <p class="project-tagline">An advanced time series forecasting solution enabling accurate demand prediction and optimized inventory management for wine distribution.</p>
 
-            <a href="https://github.com/alxsaji" target="_blank" class="btn-primary">
+            <a href="https://github.com/alxsaji/wine-sales-forecasting" target="_blank" class="btn-primary">
                 <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
                     <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
                 </svg>
@@ -54,11 +60,34 @@
         </div>
     </section>
 
+    <!-- Project Metadata -->
     <section class="project-section">
         <div class="container">
-            <div class="content-box">
-                <h3>Project Overview</h3>
-                <p>Forecasted wine sales using advanced time series analysis techniques including ARIMA and SARIMA models to support inventory planning and demand management. The accurate forecasts enabled optimized stock levels, reducing both stockouts and excess inventory costs.</p>
+            <div class="project-metadata">
+                <div class="metadata-item">
+                    <div class="metadata-label">Role</div>
+                    <div class="metadata-value">Data Scientist</div>
+                </div>
+                <div class="metadata-item">
+                    <div class="metadata-label">Team</div>
+                    <div class="metadata-value-list">
+                        <span>Operations Manager</span>
+                        <span>Inventory Analyst</span>
+                    </div>
+                </div>
+                <div class="metadata-item">
+                    <div class="metadata-label">Tools</div>
+                    <div class="metadata-value-list">
+                        <span>Python</span>
+                        <span>ARIMA</span>
+                        <span>SARIMA</span>
+                        <span>Statsmodels</span>
+                    </div>
+                </div>
+                <div class="metadata-item">
+                    <div class="metadata-label">Timeline</div>
+                    <div class="metadata-value">2 months</div>
+                </div>
             </div>
         </div>
     </section>
@@ -66,8 +95,9 @@
     <section class="project-section">
         <div class="container">
             <div class="content-box">
-                <h3>Problem Statement</h3>
-                <p>Wine distributor struggled with inventory management due to unpredictable demand patterns and seasonal variations. Overstock led to storage costs and product aging issues, while stockouts resulted in lost sales opportunities. The business needed accurate sales forecasts to optimize inventory levels and purchasing decisions.</p>
+                <h2 class="section-header">Context</h2>
+                <p>This project emerged from <span class="highlight-text">a critical challenge in inventory management</span> for wine distribution. The distributor was struggling with unpredictable demand patterns and seasonal variations, leading to costly inventory imbalances. Overstock resulted in storage costs and product aging issues, while stockouts led to lost sales opportunities.</p>
+                <p>The challenge stems from <span class="highlight-text">the complexity of demand forecasting</span> in the wine industry, where seasonal patterns, trends, and external factors all influence sales. Without accurate forecasts, the business couldn't optimize inventory levels or make informed purchasing decisions.</p>
             </div>
         </div>
     </section>
@@ -75,17 +105,17 @@
     <section class="project-section">
         <div class="container">
             <div class="content-box">
-                <h3>Solution & Approach</h3>
-                <p>Developed comprehensive time series forecasting solution using statistical models:</p>
+                <h2 class="section-header">Problem</h2>
+                <p>There is <span class="highlight-text">an abundance of historical sales data</span> but <span class="highlight-text">lack of reliable forecasting methods</span> for operations teams to determine <span class="highlight-text">future demand patterns</span> and optimize inventory levels and purchasing decisions.</p>
+                <h3 class="section-subheader">How Might We</h3>
+                <p class="phase-question">"How might we develop accurate sales forecasts to optimize inventory levels, reduce stockouts and overstock, and improve cash flow management in wine distribution?"</p>
+                <p>Operations teams face several key challenges:</p>
                 <ul>
-                    <li>Collected and preprocessed historical sales data spanning 5 years</li>
-                    <li>Performed exploratory time series analysis to identify trends, seasonality, and patterns</li>
-                    <li>Conducted stationarity tests using Augmented Dickey-Fuller test</li>
-                    <li>Applied differencing to achieve stationarity where needed</li>
-                    <li>Built ARIMA models and optimized parameters using ACF and PACF plots</li>
-                    <li>Developed SARIMA models to capture seasonal patterns</li>
-                    <li>Validated models using rolling window cross-validation</li>
-                    <li>Generated 12-month ahead forecasts with confidence intervals</li>
+                    <li>Difficulty predicting seasonal demand variations</li>
+                    <li>Lack of understanding of underlying sales trends</li>
+                    <li>Inability to account for cyclical patterns in forecasting</li>
+                    <li>Limited visibility into future demand uncertainty</li>
+                    <li>Challenges in balancing inventory costs with service levels</li>
                 </ul>
             </div>
         </div>
@@ -94,8 +124,8 @@
     <section class="project-section">
         <div class="container">
             <div class="content-box">
-                <h3>Process & Methodology</h3>
-                <p>Time series decomposition revealed strong seasonal components with peaks during holiday periods. Tested multiple model configurations and selected optimal parameters using AIC and BIC criteria. Implemented SARIMA(2,1,2)(1,1,1,12) model after comparing performance with baseline methods. Validated forecast accuracy using MAPE, RMSE, and MAE metrics.</p>
+                <h2 class="section-header">Project Goal</h2>
+                <p>Make the process of sales forecasting <span class="highlight-text">accurate</span>, <span class="highlight-text">reliable</span>, and <span class="highlight-text">actionable</span> for the wine distributor, enabling them to optimize inventory levels, reduce costs, and improve operational efficiency.</p>
             </div>
         </div>
     </section>
@@ -103,8 +133,9 @@
     <section class="project-section">
         <div class="container">
             <div class="content-box">
-                <h3>Results & Outcomes</h3>
-                <p>Final SARIMA model achieved 92% forecast accuracy with MAPE of 8.2%. Successfully predicted seasonal demand spikes enabling proactive inventory buildup. Implementation of forecasting system reduced stockouts by 35% and excess inventory by 28%, improving cash flow by $450K annually. Forecast confidence intervals helped risk management in procurement decisions.</p>
+                <h2 class="section-header">Solution</h2>
+                <p class="project-tagline" style="margin-bottom: 24px;">"Forecast demand with accuracy, precision, and confidence – the goal is to Optimize Inventory Management."</p>
+                <p>Developed a comprehensive time series forecasting solution using advanced statistical models including ARIMA and SARIMA. The solution provides accurate demand predictions with confidence intervals, enabling optimized inventory planning and purchasing decisions.</p>
             </div>
         </div>
     </section>
@@ -112,7 +143,91 @@
     <section class="project-section">
         <div class="container">
             <div class="content-box">
-                <h3>Technologies Used</h3>
+                <h2 class="section-header">Core Features</h2>
+                <div class="features-grid">
+                    <div class="feature-item">
+                        <h4>Accurate Forecasting</h4>
+                        <p>High-accuracy demand predictions using advanced time series models (ARIMA, SARIMA) with 92% forecast accuracy.</p>
+                    </div>
+                    <div class="feature-item">
+                        <h4>Seasonal Pattern Recognition</h4>
+                        <p>Automatic identification and modeling of seasonal patterns including holiday peaks and cyclical variations.</p>
+                    </div>
+                    <div class="feature-item">
+                        <h4>Confidence Intervals</h4>
+                        <p>Forecast uncertainty quantification through confidence intervals to support risk management in procurement decisions.</p>
+                    </div>
+                    <div class="feature-item">
+                        <h4>Long-term Planning</h4>
+                        <p>12-month ahead forecasts enabling proactive inventory planning and strategic purchasing decisions.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="project-section">
+        <div class="container">
+            <div class="content-box">
+                <h2 class="section-header">Approach</h2>
+                <p>The project was developed using a systematic time series forecasting methodology, following best practices in statistical modeling, model selection, and forecast validation. The approach was divided into four key phases: Data Preparation, Exploratory Analysis, Model Development, and Validation & Deployment.</p>
+                
+                <div class="methodology-phases">
+                    <div class="phase-box">
+                        <div class="phase-label">Phase 1</div>
+                        <h3 class="phase-title">Data Collection & Preparation</h3>
+                        <p class="phase-question">"What historical data do we need, and how do we prepare it for time series analysis?"</p>
+                        <p class="phase-description">Collected and preprocessed historical sales data spanning 5 years including daily/monthly sales volumes. Performed data cleaning including handling missing values, outliers, and data validation. Ensured data quality and consistency for time series modeling. Created time series objects with proper date indexing.</p>
+                    </div>
+                    
+                    <div class="phase-box">
+                        <div class="phase-label">Phase 2</div>
+                        <h3 class="phase-title">Exploratory Time Series Analysis</h3>
+                        <p class="phase-question">"What patterns and characteristics exist in the sales data?"</p>
+                        <p class="phase-description">Performed exploratory time series analysis to identify trends, seasonality, and patterns. Conducted time series decomposition to separate trend, seasonal, and residual components. Applied stationarity tests using Augmented Dickey-Fuller test. Analyzed autocorrelation (ACF) and partial autocorrelation (PACF) plots to understand data structure.</p>
+                    </div>
+                    
+                    <div class="phase-box">
+                        <div class="phase-label">Phase 3</div>
+                        <h3 class="phase-title">Model Development & Optimization</h3>
+                        <p class="phase-question">"Which models provide the best forecast accuracy?"</p>
+                        <p class="phase-description">Applied differencing to achieve stationarity where needed. Built ARIMA models and optimized parameters (p, d, q) using ACF and PACF plots. Developed SARIMA models to capture seasonal patterns with seasonal parameters (P, D, Q, s). Tested multiple model configurations and selected optimal parameters using AIC and BIC criteria. Implemented SARIMA(2,1,2)(1,1,1,12) as the final model.</p>
+                    </div>
+                    
+                    <div class="phase-box">
+                        <div class="phase-label">Phase 4</div>
+                        <h3 class="phase-title">Validation & Forecast Generation</h3>
+                        <p class="phase-question">"How do we validate model accuracy and generate reliable forecasts?"</p>
+                        <p class="phase-description">Validated models using rolling window cross-validation to assess forecast accuracy. Evaluated model performance using MAPE, RMSE, and MAE metrics. Generated 12-month ahead forecasts with confidence intervals. Conducted sensitivity analysis and model diagnostics to ensure forecast reliability.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="project-section">
+        <div class="container">
+            <div class="content-box">
+                <h2 class="section-header">Results & Outcomes</h2>
+                <p>Final SARIMA model achieved <span class="highlight-text">92% forecast accuracy</span> with <span class="highlight-text">MAPE of 8.2%</span>, significantly outperforming baseline forecasting methods.</p>
+                <h3 class="section-subheader">Key Achievements</h3>
+                <ul>
+                    <li>Achieved 92% forecast accuracy with MAPE of 8.2%</li>
+                    <li>Successfully predicted seasonal demand spikes enabling proactive inventory buildup</li>
+                    <li>Reduced stockouts by 35% through accurate demand forecasting</li>
+                    <li>Reduced excess inventory by 28% improving cash flow by $450K annually</li>
+                    <li>Enabled risk management through forecast confidence intervals</li>
+                    <li>Improved operational efficiency through data-driven inventory planning</li>
+                </ul>
+                <p>The forecasting system transformed inventory management, enabling the distributor to balance service levels with inventory costs effectively while improving cash flow and operational efficiency.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="project-section">
+        <div class="container">
+            <div class="content-box">
+                <h2 class="section-header">Technologies Used</h2>
                 <div class="tech-tags">
                     <span class="tech-tag">Python</span>
                     <span class="tech-tag">ARIMA</span>
@@ -121,6 +236,31 @@
                     <span class="tech-tag">Time Series Analysis</span>
                     <span class="tech-tag">Pandas</span>
                     <span class="tech-tag">Matplotlib</span>
+                    <span class="tech-tag">Jupyter Notebook</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="reflection-section">
+        <div class="container">
+            <div class="reflection-content">
+                <h2 class="section-header">Reflection</h2>
+                <p style="font-size: 16px; line-height: 1.8; color: var(--text-secondary); margin-bottom: 40px;">This wine sales forecasting project has been a rewarding experience that pushed me to think beyond basic statistical methods and explore the power of time series analysis in demand forecasting.</p>
+                
+                <div class="reflection-item">
+                    <h4>Time Series Analysis Requires Careful Exploration</h4>
+                    <p>I learned that successful time series forecasting requires thorough exploratory analysis. Understanding the data's characteristics - trends, seasonality, and stationarity - is crucial before selecting and building models. The time spent on exploratory analysis paid off significantly in model accuracy.</p>
+                </div>
+                
+                <div class="reflection-item">
+                    <h4>Model Selection is Both Art and Science</h4>
+                    <p>I discovered that model selection involves balancing statistical criteria (AIC, BIC) with business understanding. The SARIMA model captured seasonal patterns that ARIMA couldn't, demonstrating the importance of choosing models that match the data's characteristics. However, more complex models aren't always better - simplicity and interpretability matter too.</p>
+                </div>
+                
+                <div class="reflection-item">
+                    <h4>Forecast Uncertainty is Valuable</h4>
+                    <p>Providing confidence intervals alongside point forecasts was crucial for risk management. The business could make informed decisions about inventory levels by understanding forecast uncertainty. This experience taught me that communicating uncertainty is as important as the forecast itself.</p>
                 </div>
             </div>
         </div>
@@ -137,8 +277,8 @@
         <div class="container">
             <p>© 2024 Alex Saji. All rights reserved.</p>
             <div class="footer-links">
-                <a href="https://github.com/alxsaji" target="_blank">GitHub</a>
-                <a href="https://linkedin.com/in/alxsaji" target="_blank">LinkedIn</a>
+                <a href="https://github.com/alxsaji/wine-sales-forecasting" target="_blank">GitHub</a>
+                <a href="https://linkedin.com/in/alexsaji" target="_blank">LinkedIn</a>
             </div>
         </div>
     </footer>

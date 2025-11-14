@@ -14,9 +14,14 @@
     <nav class="navbar">
         <div class="container">
             <a href="index.html" class="logo">Alex Saji</a>
+            <button class="menu-toggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
             <div class="nav-links">
                 <a href="index.html">Home</a>
-                <a href="index.html#about">About</a>
+                <a href="about.html">About</a>
                 <a href="index.html#contact" class="contact-btn">Contact</a>
             </div>
         </div>
@@ -33,8 +38,9 @@
 
             <h1 class="project-page-title">Market Basket Analysis for Coffee Chain Revenue</h1>
             <p class="project-category">Marketing Analytics</p>
+            <p class="project-tagline">A data-driven solution identifying product associations to optimize store layout and increase revenue through strategic cross-selling.</p>
 
-            <a href="https://github.com/alxsaji" target="_blank" class="btn-primary">
+            <a href="https://github.com/alxsaji/market-basket-analysis" target="_blank" class="btn-primary">
                 <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
                     <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
                 </svg>
@@ -54,11 +60,33 @@
         </div>
     </section>
 
+    <!-- Project Metadata -->
     <section class="project-section">
         <div class="container">
-            <div class="content-box">
-                <h3>Project Overview</h3>
-                <p>Analyzed customer purchase patterns at a coffee chain using market basket analysis to identify product associations and optimize product placement. The insights enabled strategic cross-selling recommendations and increased average transaction value through data-driven merchandising decisions.</p>
+            <div class="project-metadata">
+                <div class="metadata-item">
+                    <div class="metadata-label">Role</div>
+                    <div class="metadata-value">Data Analyst</div>
+                </div>
+                <div class="metadata-item">
+                    <div class="metadata-label">Team</div>
+                    <div class="metadata-value-list">
+                        <span>Retail Manager</span>
+                        <span>Store Operations</span>
+                    </div>
+                </div>
+                <div class="metadata-item">
+                    <div class="metadata-label">Tools</div>
+                    <div class="metadata-value-list">
+                        <span>KNIME</span>
+                        <span>Association Rules</span>
+                        <span>Apriori Algorithm</span>
+                    </div>
+                </div>
+                <div class="metadata-item">
+                    <div class="metadata-label">Timeline</div>
+                    <div class="metadata-value">1 month</div>
+                </div>
             </div>
         </div>
     </section>
@@ -66,8 +94,9 @@
     <section class="project-section">
         <div class="container">
             <div class="content-box">
-                <h3>Problem Statement</h3>
-                <p>The coffee chain wanted to understand which products customers frequently purchase together to optimize store layout and implement effective cross-selling strategies. Without data-driven insights into purchase patterns, the business was missing opportunities to increase revenue through strategic product placement and bundling.</p>
+                <h2 class="section-header">Context</h2>
+                <p>This project emerged from <span class="highlight-text">a critical opportunity in retail optimization</span> - understanding which products customers frequently purchase together. The coffee chain was operating without data-driven insights into purchase patterns, missing opportunities to increase revenue through strategic product placement and cross-selling.</p>
+                <p>The challenge stems from <span class="highlight-text">the abundance of transaction data</span> but <span class="highlight-text">lack of analytical methods</span> to identify product associations and optimize store layout. Without proper analysis, the business couldn't effectively position products or create compelling product bundles.</p>
             </div>
         </div>
     </section>
@@ -75,16 +104,17 @@
     <section class="project-section">
         <div class="container">
             <div class="content-box">
-                <h3>Solution & Approach</h3>
-                <p>Implemented market basket analysis using KNIME and association rule mining techniques:</p>
+                <h2 class="section-header">Problem</h2>
+                <p>There is <span class="highlight-text">an abundance of transaction data</span> but <span class="highlight-text">lack of reliable methods</span> for retail teams to determine <span class="highlight-text">which products customers purchase together</span> and optimize product placement and cross-selling strategies.</p>
+                <h3 class="section-subheader">How Might We</h3>
+                <p class="phase-question">"How might we identify product associations to optimize store layout, implement effective cross-selling strategies, and increase average transaction value in the coffee chain retail environment?"</p>
+                <p>Retail teams face several key challenges:</p>
                 <ul>
-                    <li>Collected and preprocessed transaction data from multiple store locations</li>
-                    <li>Transformed data into transaction format suitable for association rule mining</li>
-                    <li>Applied Apriori algorithm to identify frequent itemsets</li>
-                    <li>Generated association rules with confidence, support, and lift metrics</li>
-                    <li>Filtered rules based on minimum support (5%) and confidence (40%) thresholds</li>
-                    <li>Visualized product associations using network graphs</li>
-                    <li>Developed actionable recommendations for product placement and promotions</li>
+                    <li>Difficulty identifying which products are frequently purchased together</li>
+                    <li>Lack of data-driven insights for store layout optimization</li>
+                    <li>Inability to create effective product bundles and promotions</li>
+                    <li>Limited understanding of cross-selling opportunities</li>
+                    <li>Challenges in increasing average transaction value</li>
                 </ul>
             </div>
         </div>
@@ -93,8 +123,8 @@
     <section class="project-section">
         <div class="container">
             <div class="content-box">
-                <h3>Process & Methodology</h3>
-                <p>Data preprocessing involved cleaning transaction records and encoding products for basket analysis. Applied association rule mining to discover frequent itemsets and product combinations. Evaluated rules using support, confidence, and lift metrics to identify statistically significant associations. Created visualizations to communicate findings to non-technical stakeholders.</p>
+                <h2 class="section-header">Project Goal</h2>
+                <p>Make the process of product association analysis <span class="highlight-text">reliable</span>, <span class="highlight-text">actionable</span>, and <span class="highlight-text">revenue-focused</span> for the coffee chain, enabling them to optimize product placement and increase average transaction value through data-driven merchandising decisions.</p>
             </div>
         </div>
     </section>
@@ -102,8 +132,9 @@
     <section class="project-section">
         <div class="container">
             <div class="content-box">
-                <h3>Results & Outcomes</h3>
-                <p>Identified 25+ high-confidence product associations including strong relationships between coffee and pastry items. Discovered that customers who purchased specialty coffee were 3.5x more likely to buy artisan sandwiches. Recommendations led to 18% increase in cross-selling success rate and 12% growth in average transaction value after implementing optimized product placement.</p>
+                <h2 class="section-header">Solution</h2>
+                <p class="project-tagline" style="margin-bottom: 24px;">"Discover product associations with precision, insight, and actionability – the goal is to Maximize Revenue per Transaction."</p>
+                <p>Developed a comprehensive market basket analysis framework using association rule mining to identify product associations and guide merchandising strategies. The solution provides actionable insights for product placement, bundling, and cross-selling opportunities.</p>
             </div>
         </div>
     </section>
@@ -111,13 +142,122 @@
     <section class="project-section">
         <div class="container">
             <div class="content-box">
-                <h3>Technologies Used</h3>
+                <h2 class="section-header">Core Features</h2>
+                <div class="features-grid">
+                    <div class="feature-item">
+                        <h4>Association Rule Mining</h4>
+                        <p>Identify frequent product combinations and associations using Apriori algorithm with confidence, support, and lift metrics.</p>
+                    </div>
+                    <div class="feature-item">
+                        <h4>Product Placement Insights</h4>
+                        <p>Data-driven recommendations for optimal product positioning to maximize cross-selling opportunities.</p>
+                    </div>
+                    <div class="feature-item">
+                        <h4>Bundle Recommendations</h4>
+                        <p>Strategic product bundling suggestions based on strong associations to increase average transaction value.</p>
+                    </div>
+                    <div class="feature-item">
+                        <h4>Visual Analytics</h4>
+                        <p>Network graphs and visualizations to communicate product associations to store operations teams.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="project-section">
+        <div class="container">
+            <div class="content-box">
+                <h2 class="section-header">Approach</h2>
+                <p>The project was developed using a systematic market basket analysis methodology, following best practices in association rule mining and retail analytics. The approach was divided into four key phases: Data Preparation, Association Rule Mining, Rule Evaluation, and Strategy Development.</p>
+                
+                <div class="methodology-phases">
+                    <div class="phase-box">
+                        <div class="phase-label">Phase 1</div>
+                        <h3 class="phase-title">Data Collection & Preparation</h3>
+                        <p class="phase-question">"What transaction data do we need, and how do we prepare it for analysis?"</p>
+                        <p class="phase-description">Collected transaction data from multiple store locations including product IDs, transaction IDs, and purchase timestamps. Preprocessed data by cleaning transaction records, handling missing values, and encoding products for basket analysis. Transformed data into transaction format suitable for association rule mining algorithms.</p>
+                    </div>
+                    
+                    <div class="phase-box">
+                        <div class="phase-label">Phase 2</div>
+                        <h3 class="phase-title">Association Rule Mining</h3>
+                        <p class="phase-question">"How do we identify which products are frequently purchased together?"</p>
+                        <p class="phase-description">Applied Apriori algorithm in KNIME to identify frequent itemsets and product combinations. Generated association rules with confidence, support, and lift metrics to measure the strength of product associations. Filtered rules based on minimum support (5%) and confidence (40%) thresholds to identify statistically significant associations.</p>
+                    </div>
+                    
+                    <div class="phase-box">
+                        <div class="phase-label">Phase 3</div>
+                        <h3 class="phase-title">Rule Evaluation & Analysis</h3>
+                        <p class="phase-question">"How do we evaluate and prioritize product associations?"</p>
+                        <p class="phase-description">Evaluated association rules using support (frequency of co-occurrence), confidence (conditional probability), and lift (strength of association) metrics. Identified high-lift rules indicating strong product associations. Analyzed patterns across different store locations and time periods to identify consistent associations.</p>
+                    </div>
+                    
+                    <div class="phase-box">
+                        <div class="phase-label">Phase 4</div>
+                        <h3 class="phase-title">Visualization & Recommendations</h3>
+                        <p class="phase-question">"How do we translate associations into actionable merchandising strategies?"</p>
+                        <p class="phase-description">Visualized product associations using network graphs showing relationships between products. Developed actionable recommendations for product placement, bundling strategies, and cross-selling opportunities. Created visualizations to communicate findings to non-technical stakeholders including store managers and operations teams.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="project-section">
+        <div class="container">
+            <div class="content-box">
+                <h2 class="section-header">Results & Outcomes</h2>
+                <p>Identified <span class="highlight-text">25+ high-confidence product associations</span> including strong relationships between coffee and pastry items. Discovered that customers who purchased specialty coffee were <span class="highlight-text">3.5x more likely</span> to buy artisan sandwiches.</p>
+                <h3 class="section-subheader">Key Achievements</h3>
+                <ul>
+                    <li>Increased cross-selling success rate by 18% through optimized product placement</li>
+                    <li>Grew average transaction value by 12% after implementing recommendations</li>
+                    <li>Identified strong associations between coffee and complementary products</li>
+                    <li>Enabled data-driven store layout optimization across all locations</li>
+                    <li>Created effective product bundles based on association rules</li>
+                    <li>Improved revenue per transaction through strategic cross-selling</li>
+                </ul>
+                <p>The recommendations led to significant improvements in cross-selling effectiveness and average transaction value, demonstrating the power of data-driven merchandising decisions.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="project-section">
+        <div class="container">
+            <div class="content-box">
+                <h2 class="section-header">Technologies Used</h2>
                 <div class="tech-tags">
                     <span class="tech-tag">KNIME</span>
                     <span class="tech-tag">Association Rules</span>
                     <span class="tech-tag">Apriori Algorithm</span>
                     <span class="tech-tag">Data Preprocessing</span>
                     <span class="tech-tag">Market Basket Analysis</span>
+                    <span class="tech-tag">Python</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="reflection-section">
+        <div class="container">
+            <div class="reflection-content">
+                <h2 class="section-header">Reflection</h2>
+                <p style="font-size: 16px; line-height: 1.8; color: var(--text-secondary); margin-bottom: 40px;">This market basket analysis project has been a rewarding experience that pushed me to think beyond basic analytics and explore the power of association rule mining in retail optimization.</p>
+                
+                <div class="reflection-item">
+                    <h4>Association Rules Require Careful Interpretation</h4>
+                    <p>I learned that association rules provide valuable insights, but they need to be interpreted carefully with business context. Not all high-confidence rules are actionable - some associations might be obvious or not strategically valuable. The key is identifying rules that can drive real business impact.</p>
+                </div>
+                
+                <div class="reflection-item">
+                    <h4>Visualization Makes Insights Accessible</h4>
+                    <p>Creating network graphs and visualizations was crucial for communicating findings to store operations teams. Visual representations of product associations made the insights more accessible and actionable for non-technical stakeholders who needed to implement the recommendations.</p>
+                </div>
+                
+                <div class="reflection-item">
+                    <h4>Implementation is as Important as Analysis</h4>
+                    <p>I discovered that identifying product associations is just the first step - the real challenge is implementing the recommendations effectively. Working closely with store operations helped me understand the practical constraints and develop actionable strategies that could actually be implemented in stores.</p>
                 </div>
             </div>
         </div>
@@ -134,8 +274,8 @@
         <div class="container">
             <p>© 2024 Alex Saji. All rights reserved.</p>
             <div class="footer-links">
-                <a href="https://github.com/alxsaji" target="_blank">GitHub</a>
-                <a href="https://linkedin.com/in/alxsaji" target="_blank">LinkedIn</a>
+                <a href="https://github.com/alxsaji/market-basket-analysis" target="_blank">GitHub</a>
+                <a href="https://linkedin.com/in/alexsaji" target="_blank">LinkedIn</a>
             </div>
         </div>
     </footer>
