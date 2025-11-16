@@ -16,27 +16,58 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Close menu when clicking on a link
         navLinks.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', () => {
-                menuToggle.classList.remove('active');
-                navLinks.classList.remove('active');
-                navLinks.classList.remove('mobile-menu');
-                body.classList.remove('menu-open');
-                body.style.overflow = '';
-            });
+            link.addEventListener('click', (e) => {
+                e.stopPropagation();
+                
+                const href = link.getAttribute('href');
+                
+                // For anchor links, handle smooth scroll
+                if (href && href.startsWith('#')) {
+                    e.preventDefault();
+                    const target = document.querySelector(href);
+                    if (target) {
+                        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+                    // Close menu after scroll
+                    setTimeout(() => {
+                        menuToggle.classList.remove('active');
+                        navLinks.classList.remove('active');
+                        navLinks.classList.remove('mobile-menu');
+                        body.classList.remove('menu-open');
+                        body.style.overflow = '';
+                    }, 300);
+                } else {
+                    // For regular links, close menu and let browser navigate
+                    menuToggle.classList.remove('active');
+                    navLinks.classList.remove('active');
+                    navLinks.classList.remove('mobile-menu');
+                    body.classList.remove('menu-open');
+                    body.style.overflow = '';
+                    // Don't prevent default - let browser handle navigation
+                }
+            }, true);
         });
 
-        // Close menu when clicking outside
+        // Close menu when clicking on backdrop (outside menu)
         document.addEventListener('click', (e) => {
-            if (body.classList.contains('menu-open') && 
-                !navLinks.contains(e.target) && 
-                !menuToggle.contains(e.target)) {
-                menuToggle.classList.remove('active');
-                navLinks.classList.remove('active');
-                navLinks.classList.remove('mobile-menu');
-                body.classList.remove('menu-open');
-                body.style.overflow = '';
+            if (body.classList.contains('menu-open')) {
+                const isClickOnMenu = navLinks.contains(e.target);
+                const isClickOnToggle = menuToggle.contains(e.target);
+                const isClickOnLink = navLinks.querySelector('a') && 
+                    Array.from(navLinks.querySelectorAll('a')).some(link => 
+                        link === e.target || link.contains(e.target)
+                    );
+                
+                // Only close if clicking outside menu and toggle
+                if (!isClickOnMenu && !isClickOnToggle && !isClickOnLink) {
+                    menuToggle.classList.remove('active');
+                    navLinks.classList.remove('active');
+                    navLinks.classList.remove('mobile-menu');
+                    body.classList.remove('menu-open');
+                    body.style.overflow = '';
+                }
             }
-        });
+        }, true); // Use capture phase
     }
 });
 
