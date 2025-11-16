@@ -5,8 +5,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const body = document.body;
 
     if (menuToggle && navLinks) {
-        menuToggle.addEventListener('click', () => {
+        menuToggle.addEventListener('click', (e) => {
+            e.stopPropagation();
             menuToggle.classList.toggle('active');
+            navLinks.classList.add('mobile-menu');
             navLinks.classList.toggle('active');
             body.classList.toggle('menu-open');
             body.style.overflow = navLinks.classList.contains('active') ? 'hidden' : '';
@@ -17,6 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
             link.addEventListener('click', () => {
                 menuToggle.classList.remove('active');
                 navLinks.classList.remove('active');
+                navLinks.classList.remove('mobile-menu');
                 body.classList.remove('menu-open');
                 body.style.overflow = '';
             });
@@ -29,6 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 !menuToggle.contains(e.target)) {
                 menuToggle.classList.remove('active');
                 navLinks.classList.remove('active');
+                navLinks.classList.remove('mobile-menu');
                 body.classList.remove('menu-open');
                 body.style.overflow = '';
             }
@@ -84,12 +88,386 @@ let lastScroll = 0;
 window.addEventListener('scroll', () => {
     const navbar = document.querySelector('.navbar');
     const currentScroll = window.pageYOffset;
+    const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
 
     if (currentScroll > 50) {
-        navbar.style.boxShadow = '0 2px 8px rgba(0,0,0,0.05)';
+        navbar.style.boxShadow = isDark 
+            ? '0 4px 24px rgba(0, 0, 0, 0.4)' 
+            : '0 4px 24px rgba(0, 0, 0, 0.08)';
     } else {
-        navbar.style.boxShadow = 'none';
+        navbar.style.boxShadow = '0 4px 24px rgba(0, 0, 0, 0.06)';
     }
 
     lastScroll = currentScroll;
+});
+
+// Theme Toggle Functionality
+document.addEventListener('DOMContentLoaded', () => {
+    const themeToggle = document.getElementById('themeToggle');
+    const html = document.documentElement;
+    
+    // Check for saved theme preference or default to light mode
+    const currentTheme = localStorage.getItem('theme') || 'light';
+    html.setAttribute('data-theme', currentTheme);
+    
+    // Update toggle button state
+    updateThemeIcon(currentTheme);
+    
+    // Theme toggle event
+    if (themeToggle) {
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = html.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            
+            html.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            updateThemeIcon(newTheme);
+            
+            // Update navbar shadow on theme change
+            const navbar = document.querySelector('.navbar');
+            const scrollY = window.pageYOffset;
+            if (scrollY > 50) {
+                navbar.style.boxShadow = newTheme === 'dark' 
+                    ? '0 4px 24px rgba(0, 0, 0, 0.4)' 
+                    : '0 4px 24px rgba(0, 0, 0, 0.08)';
+            }
+        });
+    }
+    
+    function updateThemeIcon(theme) {
+        // Icon animation is handled by CSS
+        // This function can be used for additional logic if needed
+    }
+});
+
+// Hero Background Water-like Parallax Effect
+document.addEventListener('DOMContentLoaded', () => {
+    const hero = document.querySelector('.hero');
+    const heroIllustrations = document.querySelector('.hero-background-illustrations');
+    const heroWaterBackground = document.getElementById('heroWaterBackground');
+    
+    // Function to check if dark theme is active
+    const getIsDark = () => document.documentElement.getAttribute('data-theme') === 'dark';
+    
+    if (!hero || !heroIllustrations) return;
+    
+    const shapes = heroIllustrations.querySelectorAll('.illustration-shape');
+    const charts = heroIllustrations.querySelectorAll('.illustration-chart');
+    const allElements = [...shapes, ...charts];
+    
+    // Different speed multipliers for each element (creates depth effect)
+    const speedMultipliers = {
+        'shape-1': 0.15,
+        'shape-2': 0.12,
+        'shape-3': 0.18,
+        'shape-4': 0.10,
+        'shape-5': 0.14,
+        'shape-6': 0.16,
+        'chart-1': 0.20,
+        'chart-2': 0.22,
+        'chart-3': 0.19
+    };
+    
+    let mouseX = 0;
+    let mouseY = 0;
+    let targetX = 0;
+    let targetY = 0;
+    let currentX = 0;
+    let currentY = 0;
+    let isHovering = false;
+    let animationFrame = null;
+    
+    // Smooth interpolation function
+    function lerp(start, end, factor) {
+        return start + (end - start) * factor;
+    }
+    
+    // Update element positions
+    function updateParallax() {
+        // Smooth interpolation for water-like effect
+        currentX = lerp(currentX, targetX, 0.05);
+        currentY = lerp(currentY, targetY, 0.05);
+        
+        allElements.forEach((element, index) => {
+            const className = element.className.split(' ').find(cls => 
+                cls.startsWith('shape-') || cls.startsWith('chart-')
+            );
+            
+            if (!className) return;
+            
+            const speed = speedMultipliers[className] || 0.15;
+            const moveX = currentX * speed;
+            const moveY = currentY * speed;
+            
+            // Apply transform while preserving existing animation
+            element.style.transform = `translate(${moveX}px, ${moveY}px)`;
+        });
+        
+        if (isHovering || Math.abs(currentX) > 0.1 || Math.abs(currentY) > 0.1) {
+            animationFrame = requestAnimationFrame(updateParallax);
+        } else {
+            // Reset to original position smoothly
+            allElements.forEach(element => {
+                element.style.transform = 'translate(0, 0)';
+            });
+        }
+    }
+    
+    // Update water background gradient
+    function updateWaterBackground(x, y) {
+        if (!heroWaterBackground) return;
+        
+        const rect = hero.getBoundingClientRect();
+        const percentX = ((x - rect.left) / rect.width) * 100;
+        const percentY = ((y - rect.top) / rect.height) * 100;
+        
+        // Create dynamic gradient that follows mouse
+        const gradientSize = 40; // Size of the gradient circle
+        const isDark = getIsDark();
+        const opacity1 = isDark ? 0.15 : 0.10;
+        const opacity2 = isDark ? 0.10 : 0.07;
+        const opacity3 = isDark ? 0.08 : 0.05;
+        
+        const gradient = `radial-gradient(
+            circle ${gradientSize}% at ${percentX}% ${percentY}%,
+            rgba(102, 126, 234, ${opacity1}) 0%,
+            rgba(118, 75, 162, ${opacity2}) 30%,
+            rgba(102, 126, 234, ${opacity3}) 60%,
+            transparent 100%
+        )`;
+        
+        heroWaterBackground.style.background = gradient;
+    }
+    
+    // Mouse move handler
+    hero.addEventListener('mousemove', (e) => {
+        const rect = hero.getBoundingClientRect();
+        const centerX = rect.left + rect.width / 2;
+        const centerY = rect.top + rect.height / 2;
+        
+        // Calculate distance from center (normalized to -1 to 1)
+        mouseX = (e.clientX - centerX) / (rect.width / 2);
+        mouseY = (e.clientY - centerY) / (rect.height / 2);
+        
+        // Clamp values to prevent extreme movements
+        mouseX = Math.max(-1, Math.min(1, mouseX));
+        mouseY = Math.max(-1, Math.min(1, mouseY));
+        
+        targetX = mouseX * 30; // Max movement in pixels
+        targetY = mouseY * 30;
+        
+        // Update water background
+        updateWaterBackground(e.clientX, e.clientY);
+        
+        if (!isHovering) {
+            isHovering = true;
+            updateParallax();
+        }
+    });
+    
+    // Mouse leave handler - smoothly return to center
+    hero.addEventListener('mouseleave', () => {
+        isHovering = false;
+        targetX = 0;
+        targetY = 0;
+        
+        // Reset water background to center
+        if (heroWaterBackground) {
+            const rect = hero.getBoundingClientRect();
+            const centerX = rect.left + rect.width / 2;
+            const centerY = rect.top + rect.height / 2;
+            updateWaterBackground(centerX, centerY);
+        }
+        
+        // Continue animation until elements return to center
+        const returnToCenter = () => {
+            currentX = lerp(currentX, 0, 0.08);
+            currentY = lerp(currentY, 0, 0.08);
+            
+            allElements.forEach((element, index) => {
+                const className = element.className.split(' ').find(cls => 
+                    cls.startsWith('shape-') || cls.startsWith('chart-')
+                );
+                
+                if (!className) return;
+                
+                const speed = speedMultipliers[className] || 0.15;
+                const moveX = currentX * speed;
+                const moveY = currentY * speed;
+                
+                element.style.transform = `translate(${moveX}px, ${moveY}px)`;
+            });
+            
+            if (Math.abs(currentX) > 0.1 || Math.abs(currentY) > 0.1) {
+                requestAnimationFrame(returnToCenter);
+            } else {
+                allElements.forEach(element => {
+                    element.style.transform = 'translate(0, 0)';
+                });
+            }
+        };
+        
+        returnToCenter();
+    });
+    
+    // Touch support for mobile devices
+    let touchStartX = 0;
+    let touchStartY = 0;
+    
+    hero.addEventListener('touchmove', (e) => {
+        if (e.touches.length === 0) return;
+        
+        const rect = hero.getBoundingClientRect();
+        const centerX = rect.left + rect.width / 2;
+        const centerY = rect.top + rect.height / 2;
+        
+        const touch = e.touches[0];
+        mouseX = (touch.clientX - centerX) / (rect.width / 2);
+        mouseY = (touch.clientY - centerY) / (rect.height / 2);
+        
+        mouseX = Math.max(-1, Math.min(1, mouseX));
+        mouseY = Math.max(-1, Math.min(1, mouseY));
+        
+        targetX = mouseX * 20; // Smaller movement for touch
+        targetY = mouseY * 20;
+        
+        // Update water background for touch
+        updateWaterBackground(touch.clientX, touch.clientY);
+        
+        if (!isHovering) {
+            isHovering = true;
+            updateParallax();
+        }
+    });
+    
+    hero.addEventListener('touchend', () => {
+        isHovering = false;
+        targetX = 0;
+        targetY = 0;
+        
+        // Reset water background to center
+        if (heroWaterBackground) {
+            const rect = hero.getBoundingClientRect();
+            const centerX = rect.left + rect.width / 2;
+            const centerY = rect.top + rect.height / 2;
+            updateWaterBackground(centerX, centerY);
+        }
+    });
+    
+    // Update theme detection when theme changes
+    const themeObserver = new MutationObserver(() => {
+        // Theme changed, update water background to center
+        if (heroWaterBackground) {
+            const rect = hero.getBoundingClientRect();
+            const centerX = rect.left + rect.width / 2;
+            const centerY = rect.top + rect.height / 2;
+            updateWaterBackground(centerX, centerY);
+        }
+    });
+    
+    themeObserver.observe(document.documentElement, {
+        attributes: true,
+        attributeFilter: ['data-theme']
+    });
+});
+
+// Hero Name Mouse Reactivity
+document.addEventListener('DOMContentLoaded', () => {
+    const hero = document.querySelector('.hero');
+    const heroNameGradient = document.querySelector('.hero-name-gradient');
+    const heroNameMain = document.querySelector('.hero-name-main');
+    
+    if (!hero || !heroNameGradient) return;
+    
+    let mouseX = 0;
+    let mouseY = 0;
+    let currentX = 0;
+    let currentY = 0;
+    
+    // Smooth interpolation
+    function lerp(start, end, factor) {
+        return start + (end - start) * factor;
+    }
+    
+    // Update name transform
+    function updateNameTransform() {
+        // Calculate tilt based on mouse position (subtle 3D effect)
+        const tiltX = currentY * 5; // Max 5 degrees
+        const tiltY = currentX * -5; // Max -5 degrees (inverted for natural feel)
+        
+        // Calculate scale based on distance from center (subtle zoom)
+        const distance = Math.sqrt(currentX * currentX + currentY * currentY);
+        const scale = 1 + (distance * 0.02); // Max 2% scale increase
+        
+        // Apply 3D transform
+        heroNameGradient.style.transform = `
+            perspective(1000px) 
+            rotateX(${tiltX}deg) 
+            rotateY(${tiltY}deg) 
+            scale(${scale})
+        `;
+        
+        // Add subtle glow effect that follows mouse
+        const glowIntensity = Math.min(distance * 0.3, 0.5);
+        heroNameGradient.style.filter = `
+            drop-shadow(0 0 ${10 + glowIntensity * 20}px rgba(102, 126, 234, ${0.3 + glowIntensity * 0.2}))
+        `;
+        
+        // Continue animation
+        requestAnimationFrame(updateNameTransform);
+    }
+    
+    // Start animation loop
+    updateNameTransform();
+    
+    // Mouse move handler
+    hero.addEventListener('mousemove', (e) => {
+        const rect = hero.getBoundingClientRect();
+        const centerX = rect.left + rect.width / 2;
+        const centerY = rect.top + rect.height / 2;
+        
+        // Calculate normalized position (-1 to 1)
+        mouseX = (e.clientX - centerX) / (rect.width / 2);
+        mouseY = (e.clientY - centerY) / (rect.height / 2);
+        
+        // Clamp values
+        mouseX = Math.max(-1, Math.min(1, mouseX));
+        mouseY = Math.max(-1, Math.min(1, mouseY));
+    });
+    
+    // Mouse leave handler - smoothly return to center
+    hero.addEventListener('mouseleave', () => {
+        mouseX = 0;
+        mouseY = 0;
+    });
+    
+    // Smooth interpolation loop
+    function smoothUpdate() {
+        currentX = lerp(currentX, mouseX, 0.1);
+        currentY = lerp(currentY, mouseY, 0.1);
+        requestAnimationFrame(smoothUpdate);
+    }
+    
+    smoothUpdate();
+    
+    // Touch support for mobile
+    hero.addEventListener('touchmove', (e) => {
+        if (e.touches.length === 0) return;
+        
+        const rect = hero.getBoundingClientRect();
+        const centerX = rect.left + rect.width / 2;
+        const centerY = rect.top + rect.height / 2;
+        
+        const touch = e.touches[0];
+        mouseX = (touch.clientX - centerX) / (rect.width / 2);
+        mouseY = (touch.clientY - centerY) / (rect.height / 2);
+        
+        mouseX = Math.max(-1, Math.min(1, mouseX));
+        mouseY = Math.max(-1, Math.min(1, mouseY));
+    });
+    
+    hero.addEventListener('touchend', () => {
+        mouseX = 0;
+        mouseY = 0;
+    });
 });
