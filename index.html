@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Alex Saji - Transforming Data into Actionable Insights | Market Research | Data Science | Ex-Federal Bank | Toronto, Ontario, Canada">
+    <meta name="description" content="Alex Saji - Market Research Analyst & Data Scientist | Transforming Data into Actionable Insights | 4+ Years Experience | Open for Research Analyst & Data Analyst positions | Toronto, Ontario, Canada">
     <title>Alex Saji | Data Analytics Portfolio</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -100,8 +100,62 @@
                 </h1>
 
                 <p class="hero-description-text">
-                    Transforming data into actionable insights with expertise in Python, R, SQL, Tableau, and Azure. Background in banking with a passion for data-driven decision making.
+                    Transforming data into actionable insights through quantitative & qualitative research, statistical analysis, consumer insights, and marketing analytics.
                 </p>
+
+                <div class="hero-info">
+                    <div class="hero-info-badge">
+                        <div class="info-badge-icon">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                <circle cx="12" cy="10" r="3"></circle>
+                            </svg>
+                        </div>
+                        <div class="info-badge-content">
+                            <span class="info-badge-label">Location</span>
+                            <span class="info-badge-value">Toronto, Ontario</span>
+                        </div>
+                    </div>
+                    <div class="hero-info-badge">
+                        <div class="info-badge-icon">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
+                                <circle cx="9" cy="7" r="4"></circle>
+                                <path d="M22 21v-2a4 4 0 0 0-3-3.87"></path>
+                                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                            </svg>
+                        </div>
+                        <div class="info-badge-content">
+                            <span class="info-badge-label">Experience</span>
+                            <span class="info-badge-value">4+ Years</span>
+                        </div>
+                    </div>
+                    <div class="hero-info-badge">
+                        <div class="info-badge-icon">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
+                                <path d="M6 12v5.83"></path>
+                                <path d="M18 12v5.83"></path>
+                            </svg>
+                        </div>
+                        <div class="info-badge-content">
+                            <span class="info-badge-label">Education</span>
+                            <span class="info-badge-value">UT Austin & York University</span>
+                        </div>
+                    </div>
+                    <div class="hero-info-badge hero-info-badge-wide">
+                        <div class="info-badge-icon">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+                                <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+                            </svg>
+                        </div>
+                        <div class="info-badge-content">
+                            <span class="info-badge-label">Currently</span>
+                            <span class="info-badge-value">Open for Research Analyst & Data Analyst positions</span>
+                        </div>
+                    </div>
+                </div>
 
                 <div class="hero-actions">
                     <a href="#projects" class="btn-view-work">
@@ -163,6 +217,8 @@
                 <span class="skill-tag">Pandas</span>
                 <span class="skill-tag">NumPy</span>
                 <span class="skill-tag">Customer Analytics</span>
+                <span class="skill-tag">Digital Marketing Analytics</span>
+                <span class="skill-tag">Consumer Insights</span>
             </div>
         </div>
     </section>
@@ -170,12 +226,20 @@
     <!-- Projects Section -->
     <section id="projects" class="projects-section">
         <div class="container">
-            <h2 class="section-title">Featured Projects</h2>
-            <p class="section-subtitle">Explore my portfolio of data science and analytics projects, each demonstrating practical applications of advanced techniques to solve real-world problems.</p>
+            <h2 class="section-title">Featured Research Projects</h2>
+            <p class="section-subtitle">Explore my portfolio of data science and analytics projects, each demonstrating practical applications of advanced techniques to solve real-world business problems.</p>
+
+            <!-- Project Filters -->
+            <div class="project-filters">
+                <button class="filter-btn active" data-filter="all">All Projects (6)</button>
+                <button class="filter-btn" data-filter="financial">Financial Analytics (1)</button>
+                <button class="filter-btn" data-filter="consumer">Consumer Insights (3)</button>
+                <button class="filter-btn" data-filter="business">Business Intelligence (2)</button>
+            </div>
 
             <div class="projects-grid">
                 <!-- Project 1: Credit Risk -->
-                <article class="project-card">
+                <article class="project-card" data-category="financial">
                     <div class="project-icon">
                         <span class="icon-letter">C</span>
                         <p class="icon-category">Credit Risk & Finance</p>
@@ -192,7 +256,7 @@
                 </article>
 
                 <!-- Project 2: Market Basket -->
-                <article class="project-card">
+                <article class="project-card" data-category="consumer">
                     <div class="project-icon">
                         <span class="icon-letter">M</span>
                         <p class="icon-category">Marketing Analytics</p>
@@ -209,7 +273,7 @@
                 </article>
 
                 <!-- Project 3: RFM Analysis -->
-                <article class="project-card">
+                <article class="project-card" data-category="consumer">
                     <div class="project-icon">
                         <span class="icon-letter">R</span>
                         <p class="icon-category">Customer Analytics</p>
@@ -226,7 +290,7 @@
                 </article>
 
                 <!-- Project 4: Retail Orders -->
-                <article class="project-card">
+                <article class="project-card" data-category="business">
                     <div class="project-icon">
                         <span class="icon-letter">O</span>
                         <p class="icon-category">Data Analysis</p>
@@ -243,7 +307,7 @@
                 </article>
 
                 <!-- Project 5: Insurance Claims -->
-                <article class="project-card">
+                <article class="project-card" data-category="business">
                     <div class="project-icon">
                         <span class="icon-letter">I</span>
                         <p class="icon-category">Data Visualization</p>
@@ -260,7 +324,7 @@
                 </article>
 
                 <!-- Project 6: Wine Sales Forecasting -->
-                <article class="project-card">
+                <article class="project-card" data-category="consumer">
                     <div class="project-icon">
                         <span class="icon-letter">W</span>
                         <p class="icon-category">Time Series Analysis</p>
@@ -284,7 +348,7 @@
     <section id="about" class="skills-section">
         <div class="container">
             <h2 class="section-title">About Me</h2>
-            <p class="section-subtitle" style="max-width: 800px; margin: 0 auto;">Passionate about turning data into actionable insights, I bring 4 years of banking experience and expertise in data science to the table. I'm now diving deeper into a Research Analyst program at Humber College, sharpening my statistical analysis and research skills. My mission? To help organizations unlock their full potential through data-driven decisions. I thrive on solving complex business puzzles and collaborating with dynamic teams to drive growth and innovation.</p>
+            <p class="section-subtitle" style="max-width: 800px; margin: 0 auto;">Passionate about turning data into actionable insights, I bring 4+ years of banking experience and expertise in data science to the table. Currently open for Research Analyst & Data Analyst positions, I'm ready to help organizations unlock their full potential through data-driven decisions. I thrive on solving complex business puzzles and collaborating with dynamic teams to drive growth and innovation.</p>
             <div style="text-align: center; margin-top: 40px;">
                 <a href="about.html" class="btn-primary">Learn More About Me</a>
             </div>

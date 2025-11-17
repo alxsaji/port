@@ -57,9 +57,10 @@ document.addEventListener('DOMContentLoaded', () => {
                     Array.from(navLinks.querySelectorAll('a')).some(link => 
                         link === e.target || link.contains(e.target)
                     );
+                const isClickOnFilterBtn = e.target.closest('.filter-btn');
                 
-                // Only close if clicking outside menu and toggle
-                if (!isClickOnMenu && !isClickOnToggle && !isClickOnLink) {
+                // Only close if clicking outside menu and toggle (and not on filter buttons)
+                if (!isClickOnMenu && !isClickOnToggle && !isClickOnLink && !isClickOnFilterBtn) {
                     menuToggle.classList.remove('active');
                     navLinks.classList.remove('active');
                     navLinks.classList.remove('mobile-menu');
@@ -70,6 +71,105 @@ document.addEventListener('DOMContentLoaded', () => {
         }, true); // Use capture phase
     }
 });
+
+// Project Filter Functionality
+(function() {
+    'use strict';
+    
+    function initProjectFilters() {
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const projectCards = document.querySelectorAll('.project-card');
+
+        if (!filterButtons.length || !projectCards.length) {
+            console.warn('Project filters: No filter buttons or project cards found');
+            return;
+        }
+
+        // Filter function
+        function filterProjects(filterValue) {
+            let visibleCount = 0;
+            
+            // First, hide all cards
+            projectCards.forEach(card => {
+                card.classList.add('hidden');
+                card.style.display = 'none';
+            });
+            
+            // Then show matching cards
+            projectCards.forEach(card => {
+                const category = card.getAttribute('data-category');
+                
+                // Show all projects
+                if (filterValue === 'all') {
+                    card.classList.remove('hidden');
+                    card.style.display = '';
+                    visibleCount++;
+                } 
+                // Show only matching category
+                else if (category === filterValue) {
+                    card.classList.remove('hidden');
+                    card.style.display = '';
+                    visibleCount++;
+                }
+            });
+
+            // Animate visible cards
+            requestAnimationFrame(() => {
+                const visibleCards = Array.from(projectCards).filter(card => !card.classList.contains('hidden'));
+                visibleCards.forEach((card, index) => {
+                    // Reset styles for animation
+                    card.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
+                    card.style.opacity = '0';
+                    card.style.transform = 'translateY(20px)';
+                    
+                    // Animate in with stagger
+                    setTimeout(() => {
+                        card.style.opacity = '1';
+                        card.style.transform = 'translateY(0)';
+                    }, index * 50);
+                });
+            });
+        }
+
+        // Add click handlers to filter buttons
+        filterButtons.forEach(button => {
+            button.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                e.stopImmediatePropagation();
+                
+                // Remove active class from all buttons
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                
+                // Add active class to clicked button
+                this.classList.add('active');
+
+                // Get filter value and apply
+                const filter = this.getAttribute('data-filter');
+                console.log('Filter button clicked:', filter);
+                if (filter) {
+                    filterProjects(filter);
+                } else {
+                    console.warn('No data-filter attribute found on button');
+                }
+            }, false); // Use bubble phase, not capture
+        });
+
+        // Ensure "All Projects" is active by default
+        const allButton = Array.from(filterButtons).find(btn => btn.getAttribute('data-filter') === 'all');
+        if (allButton && !allButton.classList.contains('active')) {
+            allButton.classList.add('active');
+        }
+    }
+
+    // Initialize when DOM is ready
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initProjectFilters);
+    } else {
+        // DOM already loaded
+        initProjectFilters();
+    }
+})();
 
 // Smooth scroll behavior
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -94,13 +194,21 @@ const observerOptions = {
 const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
+            // Skip animation if element is hidden (being filtered)
+            if (entry.target.classList.contains('hidden')) {
+                return;
+            }
+            
             entry.target.style.opacity = '0';
             entry.target.style.transform = 'translateY(20px)';
             entry.target.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
 
             setTimeout(() => {
-                entry.target.style.opacity = '1';
-                entry.target.style.transform = 'translateY(0)';
+                // Double-check it's still visible before animating
+                if (!entry.target.classList.contains('hidden')) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
             }, 100);
 
             observer.unobserve(entry.target);
@@ -110,7 +218,8 @@ const observer = new IntersectionObserver((entries) => {
 
 // Observe all project cards and sections
 document.addEventListener('DOMContentLoaded', () => {
-    const elements = document.querySelectorAll('.project-card, .section-title, .section-subtitle');
+    // Only observe section titles and subtitles, not project cards (they're handled by filter)
+    const elements = document.querySelectorAll('.section-title, .section-subtitle');
     elements.forEach(el => observer.observe(el));
 });
 
