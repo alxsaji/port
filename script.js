@@ -627,22 +627,88 @@ document.addEventListener('DOMContentLoaded', () => {
         const greetings = ['Hi', 'Hola', 'Aloha', 'Bonjour', 'Ciao', 'Namaste', 'Konnichiwa', 'Guten Tag'];
         let currentIndex = 0;
         
+        // Function to update underline width based on text content
+        function updateUnderlineWidth() {
+            if (greetingText) {
+                // Get the actual text width by measuring the element itself
+                // Use a temporary clone to get accurate width
+                const computedStyle = window.getComputedStyle(greetingText);
+                const tempSpan = document.createElement('span');
+                tempSpan.style.visibility = 'hidden';
+                tempSpan.style.position = 'absolute';
+                tempSpan.style.top = '-9999px';
+                tempSpan.style.left = '-9999px';
+                tempSpan.style.fontSize = computedStyle.fontSize;
+                tempSpan.style.fontWeight = computedStyle.fontWeight;
+                tempSpan.style.fontFamily = computedStyle.fontFamily;
+                tempSpan.style.fontStyle = computedStyle.fontStyle;
+                tempSpan.style.letterSpacing = computedStyle.letterSpacing;
+                tempSpan.style.textTransform = computedStyle.textTransform;
+                tempSpan.textContent = greetingText.textContent;
+                document.body.appendChild(tempSpan);
+                
+                // Get the actual rendered width
+                const textWidth = tempSpan.offsetWidth;
+                document.body.removeChild(tempSpan);
+                
+                // Update the CSS variable with the exact width
+                greetingText.style.setProperty('--greeting-width', textWidth + 'px');
+            }
+        }
+        
+        // Check if user prefers reduced motion
+        const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        
         // Function to change greeting with animation
         function changeGreeting() {
+            if (prefersReducedMotion) {
+                // Instant change for users who prefer reduced motion
+                currentIndex = (currentIndex + 1) % greetings.length;
+                greetingText.textContent = greetings[currentIndex];
+                updateUnderlineWidth();
+                return;
+            }
+            
+            // Animated change for others
             greetingText.style.opacity = '0';
             greetingText.style.transform = 'translateY(-10px)';
             
-            setTimeout(() => {
-                currentIndex = (currentIndex + 1) % greetings.length;
-                greetingText.textContent = greetings[currentIndex];
-                greetingText.style.opacity = '1';
-                greetingText.style.transform = 'translateY(0)';
-            }, 300);
+            // Use requestAnimationFrame for smoother animation
+            requestAnimationFrame(() => {
+                setTimeout(() => {
+                    currentIndex = (currentIndex + 1) % greetings.length;
+                    greetingText.textContent = greetings[currentIndex];
+                    greetingText.style.opacity = '1';
+                    greetingText.style.transform = 'translateY(0)';
+                    
+                    // Update underline width after text changes
+                    requestAnimationFrame(() => {
+                        setTimeout(updateUnderlineWidth, 50);
+                    });
+                }, 300);
+            });
         }
         
-        // Initial delay, then change every 2 seconds
+        // Initial underline width update
+        requestAnimationFrame(() => {
+            setTimeout(updateUnderlineWidth, 100);
+        });
+        
+        // Initial delay, then change every 2 seconds (longer for reduced motion)
+        const changeInterval = prefersReducedMotion ? 3000 : 2000;
+        const initialDelay = prefersReducedMotion ? 500 : 1000;
+        
         setTimeout(() => {
-            setInterval(changeGreeting, 2000);
-        }, 1000);
+            setInterval(changeGreeting, changeInterval);
+        }, initialDelay);
+        
+        // Update underline width on window resize for responsive behavior
+        let resizeTimeout;
+        window.addEventListener('resize', () => {
+            clearTimeout(resizeTimeout);
+            resizeTimeout = setTimeout(() => {
+                updateUnderlineWidth();
+            }, 150);
+        });
     }
 });

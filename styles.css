@@ -3310,24 +3310,48 @@ section {
     line-height: 1.2;
     margin-bottom: 40px;
     color: var(--text-primary);
+    white-space: normal;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+.about-title > * {
+    white-space: nowrap;
 }
 
 .greeting-animated {
     display: inline-block;
     position: relative;
-    animation: greetingPulse 2s ease-in-out infinite;
     color: var(--text-primary);
     font-weight: 700;
+    font-size: clamp(2rem, 8vw, 4rem);
     transition: opacity 0.3s ease, transform 0.3s ease;
-    min-width: 80px;
-    text-align: left;
-    margin-right: 6px;
+    white-space: nowrap;
+    margin-right: 0.375rem;
+    vertical-align: baseline;
+    line-height: 1.2;
+    will-change: opacity, transform;
+}
+
+/* Animation only if motion is allowed */
+@media (prefers-reduced-motion: no-preference) {
+    .greeting-animated {
+        animation: greetingPulse 2s ease-in-out infinite;
+    }
+}
+
+/* Disable animation for users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    .greeting-animated {
+        animation: none;
+    }
 }
 
 .greeting-comma {
     display: inline-block;
     margin-left: 0;
-    margin-right: 4px;
+    margin-right: 0.25rem;
+    white-space: nowrap;
 }
 
 @keyframes greetingPulse {
@@ -3344,14 +3368,31 @@ section {
 .greeting-animated::after {
     content: '';
     position: absolute;
-    bottom: -2px;
+    bottom: -0.125rem;
     left: 0;
-    width: 100%;
-    height: 3px;
+    width: var(--greeting-width, 0px);
+    height: clamp(0.125rem, 0.3vw, 0.1875rem);
     background: var(--accent-gradient);
-    border-radius: 2px;
+    border-radius: 0.125rem;
     opacity: 0;
-    animation: greetingUnderline 2s ease-in-out infinite;
+    transition: width 0.3s ease, opacity 0.3s ease;
+    transform-origin: left;
+    will-change: transform, opacity, width;
+}
+
+/* Underline animation only if motion is allowed */
+@media (prefers-reduced-motion: no-preference) {
+    .greeting-animated::after {
+        animation: greetingUnderline 2s ease-in-out infinite;
+    }
+}
+
+/* Disable animation for users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    .greeting-animated::after {
+        animation: none;
+        opacity: 0.6; /* Show static underline instead */
+    }
 }
 
 @keyframes greetingUnderline {
@@ -3364,6 +3405,34 @@ section {
         transform: scaleX(1);
     }
 }
+
+/* Ensure title stays on one line on larger screens */
+@media (min-width: 768px) {
+    .about-title {
+        white-space: nowrap;
+    }
+}
+
+/* Allow wrapping on smaller screens */
+@media (max-width: 767px) {
+    .about-title {
+        white-space: normal;
+    }
+    
+    .greeting-animated {
+        font-size: clamp(1.75rem, 7vw, 3rem);
+        line-height: 1.3;
+    }
+}
+
+/* Optimize for very small screens */
+@media (max-width: 480px) {
+    .greeting-animated {
+        font-size: clamp(1.5rem, 6vw, 2.5rem);
+        margin-right: 0.25rem;
+    }
+}
+
 
 .about-intro {
     font-size: clamp(16px, 2.5vw, 18px);
