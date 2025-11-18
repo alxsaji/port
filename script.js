@@ -58,9 +58,10 @@ document.addEventListener('DOMContentLoaded', () => {
                         link === e.target || link.contains(e.target)
                     );
                 const isClickOnFilterBtn = e.target.closest('.filter-btn');
+                const isClickOnThemeToggle = e.target.closest('#themeToggle') || e.target.closest('.theme-toggle');
                 
-                // Only close if clicking outside menu and toggle (and not on filter buttons)
-                if (!isClickOnMenu && !isClickOnToggle && !isClickOnLink && !isClickOnFilterBtn) {
+                // Only close if clicking outside menu and toggle (and not on filter buttons or theme toggle)
+                if (!isClickOnMenu && !isClickOnToggle && !isClickOnLink && !isClickOnFilterBtn && !isClickOnThemeToggle) {
                     menuToggle.classList.remove('active');
                     navLinks.classList.remove('active');
                     navLinks.classList.remove('mobile-menu');
@@ -243,6 +244,12 @@ window.addEventListener('scroll', () => {
 
 // Theme Toggle Functionality
 document.addEventListener('DOMContentLoaded', () => {
+    // Function declaration (hoisted) - define first
+    function updateThemeIcon(theme) {
+        // Icon animation is handled by CSS
+        // This function can be used for additional logic if needed
+    }
+    
     const themeToggle = document.getElementById('themeToggle');
     const html = document.documentElement;
     
@@ -255,7 +262,10 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // Theme toggle event
     if (themeToggle) {
-        themeToggle.addEventListener('click', () => {
+        themeToggle.addEventListener('click', (e) => {
+            e.stopPropagation(); // Prevent event bubbling
+            e.preventDefault(); // Prevent any default behavior
+            
             const currentTheme = html.getAttribute('data-theme');
             const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
             
@@ -272,11 +282,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     : '0 4px 24px rgba(0, 0, 0, 0.08)';
             }
         });
-    }
-    
-    function updateThemeIcon(theme) {
-        // Icon animation is handled by CSS
-        // This function can be used for additional logic if needed
+    } else {
+        console.warn('Theme toggle button not found!');
     }
 });
 
@@ -610,4 +617,32 @@ document.addEventListener('DOMContentLoaded', () => {
         mouseX = 0;
         mouseY = 0;
     });
+});
+
+// Animated Greeting on About Page
+document.addEventListener('DOMContentLoaded', () => {
+    const greetingText = document.getElementById('greetingText');
+    
+    if (greetingText) {
+        const greetings = ['Hi', 'Hola', 'Aloha', 'Bonjour', 'Ciao', 'Namaste', 'Konnichiwa', 'Guten Tag'];
+        let currentIndex = 0;
+        
+        // Function to change greeting with animation
+        function changeGreeting() {
+            greetingText.style.opacity = '0';
+            greetingText.style.transform = 'translateY(-10px)';
+            
+            setTimeout(() => {
+                currentIndex = (currentIndex + 1) % greetings.length;
+                greetingText.textContent = greetings[currentIndex];
+                greetingText.style.opacity = '1';
+                greetingText.style.transform = 'translateY(0)';
+            }, 300);
+        }
+        
+        // Initial delay, then change every 2 seconds
+        setTimeout(() => {
+            setInterval(changeGreeting, 2000);
+        }, 1000);
+    }
 });
